@@ -1,6 +1,8 @@
 
 EchoSentinel is a modern web application that performs real-time sentiment analysis and profanity detection on audio content. Upload audio files (WAV, MP3) and visualize sentiment patterns and inappropriate language through an intuitive, interactive dashboard.
+![image](https://github.com/user-attachments/assets/189eed1b-53a2-44b8-ab5b-b657c234fee3)
 
+![image](https://github.com/user-attachments/assets/dd3df99b-a7fe-44cf-b892-1448337fd9e9)
 
 🌟 Features
 
