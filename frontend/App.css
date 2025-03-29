@@ -1,0 +1,148 @@
+:root {
+  --primary-color: #6a0dad; /* Deep purple */
+  --primary-hover: #8a2be2; /* Bright purple */
+  --success-color: #00c896; /* Vibrant teal */
+  --warning-color: #ffcc00; /* Golden yellow */
+  --danger-color: #ff3b3b; /* Bright red */
+  --background-color: #0f172a; /* Modern dark blue */
+  --card-background: linear-gradient(135deg, #1e293b, #334155); /* Sleek dark gradient */
+  --text-primary: #f8fafc; /* Soft white */
+  --text-secondary: #94a3b8; /* Muted gray */
+  --border-color: rgba(138, 43, 226, 0.4); /* Soft purple tint */
+  --shadow-md: 0 10px 25px rgba(138, 43, 226, 0.2);
+  --font-family: 'Poppins', sans-serif;
+  --border-radius: 14px;
+  --transition-speed: 0.4s;
+}
+
+body {
+  font-family: var(--font-family);
+  background: linear-gradient(120deg, #0f172a, #1e293b);
+  color: var(--text-primary);
+  margin: 0;
+  padding: 0;
+  line-height: 1.8;
+  animation: fadeIn 0.6s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.audio-uploader-container {
+  max-width: 1000px;
+  padding: 50px;
+  background: var(--card-background);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-md);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.file-upload-section {
+  padding: 40px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-md);
+  transition: transform var(--transition-speed) ease-in-out;
+}
+
+.file-upload-section:hover {
+  transform: translateY(-5px) scale(1.02);
+}
+
+.file-upload-header h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--primary-hover);
+}
+
+input[type="file"] {
+  width: 100%;
+  height: 4rem;
+  padding: 14px;
+  background: linear-gradient(135deg, #2d3748, #1f2937);
+  border: 2px dashed var(--border-color);
+  border-radius: var(--border-radius);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-speed) ease;
+}
+
+input[type="file"]:hover {
+  border-color: var(--primary-hover);
+  background: linear-gradient(135deg, #4b5563, #374151);
+}
+
+button {
+  padding: 14px 24px;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-speed) ease;
+  min-width: 160px;
+  position: relative;
+  overflow: hidden;
+}
+
+button.upload-btn {
+  background: linear-gradient(45deg, var(--primary-color), var(--primary-hover));
+}
+
+button.cancel-btn {
+  background: linear-gradient(45deg, var(--danger-color), #f87171);
+}
+
+button:hover {
+  transform: translateY(-2px) scale(1.05);
+  opacity: 0.9;
+}
+
+.upload-status {
+  padding: 16px;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  justify-content: center;
+}
+
+.upload-status.success {
+  background: rgba(0, 200, 150, 0.15);
+  color: var(--success-color);
+}
+
+.upload-status.error {
+  background: rgba(255, 59, 59, 0.15);
+  color: var(--danger-color);
+}
+
+.progress-container {
+  width: 100%;
+  background: rgba(138, 43, 226, 0.1);
+  border-radius: 8px;
+  height: 12px;
+  margin-top: 20px;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-color), var(--success-color));
+  border-radius: 8px;
+  transition: width 0.4s ease-in-out;
+}
+
+@media (max-width: 768px) {
+  .audio-uploader-container {
+    padding: 30px;
+  }
+}

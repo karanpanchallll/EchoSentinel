@@ -1,0 +1,314 @@
+:root {
+    --primary-color: #5c7cfa; /* Bright indigo */
+    --primary-hover: #748ffc; /* Lighter indigo */
+    --success-color: #40c057; /* Vivid green */
+    --warning-color: #ff922b; /* Bold orange */
+    --danger-color: #fa5252; /* Striking red */
+    --danger-dark-color: #c92a2a; /* Darker red */
+    --background-color: #f9fafb; /* Soft neutral */
+    --card-background: linear-gradient(145deg, #ffffff, #f1f5f9); /* Subtle gradient */
+    --text-primary: #172554; /* Deep blue */
+    --text-secondary: #64748b; /* Cool gray */
+    --border-color: rgba(92, 124, 250, 0.2); /* Indigo-tinted border */
+    --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 8px 16px rgba(92, 124, 250, 0.15); /* Indigo shadow */
+    --font-family: 'Poppins', sans-serif; /* Modern font */
+    --border-radius: 12px; /* Rounded corners */
+    --transition-speed: 0.3s; /* Smooth transitions */
+  }
+  
+  /* Main container styles */
+  .sentiment-analysis-graph {
+    font-family: var(--font-family);
+    background: linear-gradient(135deg, #e0e7ff, #f9fafb); /* Gradient background */
+    color: var(--text-primary);
+    padding: 32px;
+    border-radius: var(--border-radius);
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    animation: fadeIn 0.5s ease-in;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  /* Graph card styles */
+  .graph-container {
+    background: var(--card-background);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+    padding: 24px;
+    margin: 32px 0;
+    transition: all var(--transition-speed) ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .graph-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, var(--primary-color), var(--success-color));
+    opacity: 0.9;
+  }
+  
+  .graph-container:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 12px 24px rgba(92, 124, 250, 0.25);
+  }
+  
+  /* Controls section */
+  .graph-controls {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 32px;
+  }
+  
+  .graph-controls button {
+    background: linear-gradient(45deg, var(--primary-color), var(--primary-hover));
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 12px 24px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all var(--transition-speed) ease;
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .graph-controls button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.4s ease, height 0.4s ease;
+  }
+  
+  .graph-controls button:hover:not(:disabled)::after {
+    width: 200%;
+    height: 200%;
+  }
+  
+  .graph-controls button:hover:not(:disabled) {
+    transform: translateY(-2px) scale(1.03);
+  }
+  
+  .graph-controls button:active:not(:disabled) {
+    transform: scale(0.98);
+  }
+  
+  .graph-controls button:disabled {
+    background: #d1d5db;
+    cursor: not-allowed;
+  }
+  
+  .connection-status {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  .connection-status::before {
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, var(--warning-color), #ffd43b);
+    margin-right: 10px;
+    animation: pulseGlow 1.5s infinite;
+  }
+  
+  @keyframes pulseGlow {
+    0% { opacity: 0.6; transform: scale(0.9); box-shadow: 0 0 2px var(--warning-color); }
+    50% { opacity: 1; transform: scale(1.2); box-shadow: 0 0 8px var(--warning-color); }
+    100% { opacity: 0.6; transform: scale(0.9); box-shadow: 0 0 2px var(--warning-color); }
+  }
+  
+  /* Summary section */
+  .graph-summary {
+    background: var(--card-background);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+    padding: 24px;
+    margin: 32px 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .graph-summary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--warning-color), var(--danger-color));
+    opacity: 0.7;
+  }
+  
+  .graph-summary p {
+    margin: 0;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: transform var(--transition-speed) ease;
+  }
+  
+  .graph-summary p:hover {
+    transform: translateX(5px);
+  }
+  
+  .graph-summary span {
+    margin-left: 10px;
+    font-weight: 700;
+    padding: 6px 12px;
+    border-radius: 6px;
+    background: linear-gradient(45deg, rgba(255, 152, 0, 0.2), rgba(255, 152, 0, 0.1));
+    color: var(--warning-color);
+  }
+  
+  .graph-summary p:nth-child(2) span {
+    background: linear-gradient(45deg, rgba(255, 152, 0, 0.2), rgba(255, 152, 0, 0.1));
+    color: var(--warning-color);
+  }
+  
+  .graph-summary p:nth-child(3) span {
+    background: linear-gradient(45deg, rgba(250, 82, 82, 0.2), rgba(250, 82, 82, 0.1));
+    color: var(--danger-color);
+  }
+  
+  /* Legend styles */
+  .legend {
+    background: var(--card-background);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+    padding: 24px;
+    margin: 32px 0;
+    position: relative;
+  }
+  
+  .legend h4 {
+    margin: 0 0 20px 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 10px;
+    background: linear-gradient(45deg, var(--primary-color), var(--success-color));
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+  
+  .legend-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+  }
+  
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 6px;
+    transition: all var(--transition-speed) ease;
+    background: rgba(92, 124, 250, 0.05);
+  }
+  
+  .legend-item:hover {
+    background: rgba(92, 124, 250, 0.15);
+    transform: translateY(-2px);
+  }
+  
+  .legend-dot {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+    transition: transform var(--transition-speed) ease;
+  }
+  
+  .legend-item:hover .legend-dot {
+    transform: scale(1.2);
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .sentiment-analysis-graph {
+      padding: 20px;
+    }
+    
+    .graph-summary {
+      grid-template-columns: 1fr;
+    }
+    
+    .graph-controls {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 12px;
+    }
+    
+    .graph-controls button {
+      width: 100%;
+    }
+  }
+  
+  /* Dark mode support */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --background-color: #111827;
+      --card-background: linear-gradient(145deg, #1f2937, #374151);
+      --text-primary: #f9fafb;
+      --text-secondary: #9ca3af;
+      --border-color: rgba(139, 167, 250, 0.2);
+      --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.3);
+      --shadow-md: 0 8px 16px rgba(0, 0, 0, 0.4);
+    }
+    
+    .sentiment-analysis-graph {
+      background: linear-gradient(135deg, #1e293b, #111827);
+    }
+    
+    .graph-summary p:nth-child(2) span {
+      background: linear-gradient(45deg, rgba(255, 152, 0, 0.3), rgba(255, 152, 0, 0.15));
+    }
+    
+    .graph-summary p:nth-child(3) span {
+      background: linear-gradient(45deg, rgba(250, 82, 82, 0.3), rgba(250, 82, 82, 0.15));
+    }
+    
+    .legend-item {
+      background: rgba(139, 167, 250, 0.1);
+    }
+    
+    .legend-item:hover {
+      background: rgba(139, 167, 250, 0.2);
+    }
+  }
