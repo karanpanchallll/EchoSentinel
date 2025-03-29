@@ -18,7 +18,9 @@ FastAPI
 React.js
 
 Frontend Setup
+
 bashCopy# Clone the repository
+
 git clone https://github.com/yourusername/echo-sentinel.git
 cd echo-sentinel/frontend
 
@@ -27,7 +29,9 @@ npm install
 
 # Start the development server
 npm run dev
+
 Backend Setup
+
 bashCopy# Navigate to the backend directory
 cd ../backend
 
